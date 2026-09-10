@@ -1,0 +1,229 @@
+/* Core Styling Resets & Custom Theme Global Variables */
+:root {
+    --neutral-slate: #0f172a;
+    --primary-blue: #2563eb;
+    --primary-blue-hover: #1d4ed8;
+    --bg-surface: #f8fafc;
+    --bg-white: #ffffff;
+    --border-slate: #e2e8f0;
+    --text-slate-dark: #1e293b;
+    --text-slate-muted: #64748b;
+
+    /* System Status Badges Theme Array Variables */
+    --badge-submitted-bg: #dbeafe;   --badge-submitted-txt: #1e40af;
+    --badge-assigned-bg: #fae8ff;    --badge-assigned-txt: #86198f;
+    --badge-review-bg: #fef3c7;      --badge-review-txt: #92400e;
+    --badge-approved-bg: #d1fae5;    --badge-approved-txt: #065f46;
+    --badge-rejected-bg: #fee2e2;    --badge-rejected-txt: #991b1b;
+    --badge-settled-bg: #e0f2fe;     --badge-settled-txt: #0369a1;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-surface);
+    color: var(--text-slate-dark);
+    margin: 0;
+    padding: 30px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    border: 1px solid var(--border-slate);
+}
+
+.header-section {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-slate);
+    padding-bottom: 16px;
+}
+
+.header-section h1 {
+    color: var(--neutral-slate);
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Alert Notification Framework Banners */
+.alert {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.alert-success { background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.alert-danger { background-color: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* Structural Data Table Component Configurations */
+.table-responsive-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    background-color: #f1f5f9;
+    color: var(--text-slate-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-slate);
+    text-align: left;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-slate);
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+tr:hover td {
+    background-color: #f8fafc4d;
+}
+
+/* Structural Metadata Text Hierarchies */
+.meta-title { font-weight: 600; color: var(--text-slate-dark); }
+.meta-subtext { font-size: 13px; color: var(--text-slate-muted); display: block; margin-top: 2px; }
+.meta-label { font-weight: 500; color: var(--text-slate-muted); font-size: 13px; }
+.text-sm { font-size: 13px; }
+.data-row { margin-bottom: 4px; }
+.amount-highlight { font-weight: 700; color: var(--text-slate-dark); }
+
+/* Context Dynamic Status Pill Layout configurations */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+.status-SUBMITTED { background-color: var(--badge-submitted-bg); color: var(--badge-submitted-txt); }
+.status-ASSIGNED { background-color: var(--badge-assigned-bg); color: var(--badge-assigned-txt); }
+.status-UNDER_REVIEW { background-color: var(--badge-review-bg); color: var(--badge-review-txt); }
+.status-APPROVED { background-color: var(--badge-approved-bg); color: var(--badge-approved-txt); }
+.status-REJECTED { background-color: var(--badge-rejected-bg); color: var(--badge-rejected-txt); }
+.status-SETTLED { background-color: var(--badge-settled-bg); color: var(--badge-settled-txt); }
+
+/* Warning Badges & Conditional Flags */
+.unassigned-flag {
+    color: #ef4444;
+    font-weight: 600;
+    background: #fef2f2;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid #fee2e2;
+}
+
+.timestamp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Supplemental Info Row Callout Boxes */
+.callout {
+    margin-top: 6px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.callout-danger { background: #fef2f2; border-left: 3px solid #ef4444; }
+.text-danger { color: #b91c1c; }
+.text-danger-dark { color: #7f1d1d; }
+
+.callout-info { background: #f0f9ff; border-left: 3px solid var(--badge-settled-txt); }
+.text-info { color: #0369a1; }
+
+/* Control Actions Interactive Buttons Layout */
+.btn-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    min-width: 170px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.btn:active { transform: scale(0.98); }
+
+.btn-assign { background-color: var(--primary-blue); color: #ffffff; }
+.btn-assign:hover { background-color: var(--primary-blue-hover); }
+
+.btn-approve { background-color: #10b981; color: #ffffff; }
+.btn-approve:hover { background-color: #059669; }
+
+.btn-settle { background-color: #0284c7; color: #ffffff; }
+.btn-settle:hover { background-color: #0369a1; }
+
+/* Context Inline Nested Rejection form structures */
+.reject-panel-box {
+    border: 1px solid var(--border-slate);
+    border-radius: 6px;
+    padding: 8px;
+    background: #f8fafc;
+}
+.reject-field-input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    outline: none;
+}
+.reject-field-input:focus { border-color: #ef4444; }
+.btn-reject { background-color: #ef4444; color: #ffffff; }
+.btn-reject:hover { background-color: #dc2626; }
+
+.btn-disabled {
+    background-color: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Width Layout Constants */
+.col-id { width: 50px; }
+.col-actions { width: 190px; }
+.empty-table-placeholder {
+    text-align: center;
+    color: var(--text-slate-muted);
+    padding: 40px !important;
+    font-size: 15px;
+    font-weight: 500;
+}

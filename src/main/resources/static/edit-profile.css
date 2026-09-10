@@ -1,0 +1,146 @@
+/* Base Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #f4f8ff;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.edit-container {
+    max-width: 600px; /* Clean form dashboard width focus */
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #0d47a1;
+    margin-bottom: 35px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Form Container Card */
+form {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px;
+    border-top: 6px solid #1976d2;
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Row Group Structuring */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d47a1;
+}
+
+/* Input Fields Styling */
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: #1c2d42;
+    background: #f8fbff;
+    border: 1.5px solid #e3f2fd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Active interactive states */
+.form-group input:focus {
+    border-color: #1976d2;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+/* Styling for Read-Only / Disabled Inputs */
+.disabled-group label {
+    color: #78909c;
+}
+
+.disabled-group input {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+/* Action Control Row Layout */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Button UI Components */
+.btn-submit, .btn-cancel {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-submit {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+}
+
+.btn-cancel {
+    background-color: #ffffff;
+    color: #64748b;
+    border: 2px solid #cbd5e1;
+}
+
+.btn-cancel:hover {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+/* Mobile Breakpoint Optimization */
+@media(max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    form {
+        padding: 25px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

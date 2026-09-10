@@ -1,0 +1,156 @@
+/* Base Layout & Reset */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    color: #333333;
+    margin: 0;
+    padding: 30px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+.page-header h1 {
+    color: #003366; /* Deep Navy Blue */
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
+}
+
+/* Responsive Table Wrapper Box */
+.table-container {
+    background-color: #ffffff; /* Clean White Wrapper */
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.05);
+    overflow: hidden; /* Clips corners cleanly to match border-radius */
+}
+
+/* Core Table Element Structuring */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    background-color: #003366; /* Deep Navy Blue Header Rows */
+    color: #ffffff;
+    font-weight: 600;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e1e8ed;
+    font-size: 0.95rem;
+    color: #444444;
+    vertical-align: middle;
+}
+
+/* Alternating Row Tint for easier data scanning */
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tbody tr:hover {
+    background-color: #f0f4f8; /* Soft subtle blue focus glow on hover */
+}
+
+/* Empty State Styling */
+.empty-state {
+    text-align: center;
+    color: #777777;
+    font-style: italic;
+    padding: 30px;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.active-status {
+    background-color: #e6f4ea; /* Light Mint */
+    color: #137333;            /* Dark Emerald text */
+    border: 1px solid #c4eed0;
+}
+
+.inactive-status {
+    background-color: #fce8e6; /* Light Rose */
+    color: #c5221f;            /* Dark Crimson text */
+    border: 1px solid #fad2cf;
+}
+
+/* Button & Actions Formatting */
+.action-buttons {
+    display: flex;
+    gap: 8px; /* Standard spacing distance between actions */
+    flex-wrap: wrap;
+}
+
+.action-buttons a {
+    text-decoration: none; /* Strip browser link underlines */
+}
+
+.action-buttons button {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Activate Button: Outlined Emerald/Green */
+.btn-activate {
+    background-color: #ffffff;
+    color: #137333;
+    border-color: #137333 !important;
+}
+
+.btn-activate:hover {
+    background-color: #137333;
+    color: #ffffff;
+}
+
+/* Deactivate Button: Outlined Crimson/Red */
+.btn-deactivate {
+    background-color: #ffffff;
+    color: #c5221f;
+    border-color: #c5221f !important;
+}
+
+.btn-deactivate:hover {
+    background-color: #c5221f;
+    color: #ffffff;
+}
+
+/* Change Role Button: Solid Accent Bright Blue */
+.btn-role {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.btn-role:hover {
+    background-color: #004085;
+}
+
+/* Miniature click compression click feedback effect */
+.action-buttons button:active {
+    transform: scale(0.96);
+}

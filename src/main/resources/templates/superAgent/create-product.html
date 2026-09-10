@@ -1,0 +1,39 @@
+<!-- Form container with proper action and method -->
+<form th:action="@{/api/superagent/products/create}" method="post" class="form-container">
+
+    <link rel="stylesheet" th:href="@{/create-products.css}">
+    <h2>Create New Insurance Product</h2>
+
+    <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" name="productName" placeholder="e.g., Secure Health Plus" required>
+    </div>
+
+    <div class="form-group">
+        <label for="policyType">Policy Type</label>
+        <select id="policyType" name="policyType" required>
+            <option value="" disabled selected>Select Policy Type</option>
+            <option value="HEALTH_INSURANCE">Health Insurance</option>
+            <option value="LIFE_INSURANCE">Life Insurance</option>
+            <option value="CAR_INSURANCE">Car Insurance</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="basePremium">Base Premium (₹)</label>
+        <input type="number" id="basePremium" name="basePremium" placeholder="e.g., 5000" min="0" required>
+    </div>
+
+    <div class="form-group">
+        <label for="coverageAmount">Coverage Amount (₹)</label>
+        <input type="number" id="coverageAmount" name="coverageAmount" placeholder="e.g., 500000" min="0" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Enter product features and details..." rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Create Product</button>
+
+</form>

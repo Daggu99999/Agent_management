@@ -1,0 +1,146 @@
+/* Base Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #f4f8ff; /* Light blue tint canvas background */
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Centralized Grid Wrapper */
+.profile-container {
+    max-width: 600px; /* Snug card focus centered on the screen */
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #0d47a1; /* Bold corporate blue primary heading */
+    margin-bottom: 35px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Card Container Object */
+.profile-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px;
+    border-top: 6px solid #1976d2; /* Clean identity top-bar color accent */
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.04);
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Space-Between Row Detail Panels */
+.profile-details p {
+    font-size: 15px;
+    color: #455a64;
+    background: #f8fbff; /* Soft grey-blue rows */
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between; /* Pushes labels left, variables right */
+    align-items: center;
+}
+
+.profile-details strong {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+.profile-details span {
+    font-weight: 500;
+    color: #1c2d42;
+}
+
+/* Status Micro-Badges */
+.status-active, .status-inactive {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-active {
+    background-color: #e8f5e9; /* Soft green backdrop */
+    color: #2e7d32;
+}
+
+.status-inactive {
+    background-color: #ffebee; /* Soft red backdrop */
+    color: #c62828;
+}
+
+/* Action Controls Layout Matrix */
+.actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Button Components */
+.btn {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Primary Edit Profile Button */
+.btn-primary {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+}
+
+/* Secondary Change Password Button */
+.btn-secondary {
+    background-color: #ffffff;
+    color: #1976d2;
+    border: 2px solid #1976d2;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f7ff;
+}
+
+/* Responsive Viewports Layout Optimizations */
+@media(max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .profile-card {
+        padding: 25px;
+    }
+
+    .actions {
+        flex-direction: column; /* Stack functional controls vertically on mobile screens */
+        gap: 10px;
+    }
+}

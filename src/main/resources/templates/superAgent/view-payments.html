@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Payments Ledger</title>
+    <!-- Links to separate clean external CSS file -->
+    <link rel="stylesheet" th:href="@{/payments-dashboard.css}">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="header-section">
+        <h1>System Payments Registry</h1>
+    </div>
+
+    <!-- Feedback Notification Banners -->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="table-responsive-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th class="col-id">ID</th>
+                <th>Transaction Reference</th>
+                <th>Customer Account</th>
+                <th>Financial Profile</th>
+                <th>Status</th>
+                <th>Lifecycle Timeline</th>
+                <th class="col-actions">Operational Controls</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="payment : ${payments}">
+                <!-- ID Parameter -->
+                <td class="meta-title" th:text="${payment.paymentId}"></td>
+
+                <!-- Transaction details -->
+                <td>
+                    <span class="meta-title select-text" th:text="${payment.transactionId}"></span>
+                    <span class="meta-subtext" th:text="'Type: ' + ${payment.paymentType}"></span>
+                </td>
+
+
+                <td>
+                    <span class="meta-title" th:text="${payment.customer.firstName + ' ' + payment.customer.lastName}"></span>
+                    <span class="meta-subtext" th:text="${payment.customer.email}"></span>
+                </td>
+
+                <!-- Financial Details Panel -->
+                <td>
+                    <div class="data-row">
+                        <span class="meta-label">Amount: </span>
+                        <span class="amount-highlight" th:text="${'₹' + payment.amount}"></span>
+                    </div>
+                    <div class="data-row">
+                        <span class="meta-label">Policy Reference: </span>
+                        <span class="meta-title text-sm" th:text="'#' + ${payment.policy.policyId}"></span>
+                    </div>
+
+                    <!-- Nested Dynamic Refund reason box callout parameter -->
+                    <div th:if="${payment.refundReason != null}" class="callout callout-refund">
+                        <span class="meta-label text-refund">Refund Note: </span>
+                        <span class="meta-subtext text-refund-dark" th:text="${payment.refundReason}"></span>
+                    </div>
+                </td>
+
+                <!-- Live Payment Enum Status Badges -->
+                <td>
+                    <span th:text="${payment.status}" th:class="'status-badge status-' + ${payment.status}"></span>
+                </td>
+
+                <!-- Audit Timestamps System entries -->
+                <td>
+                    <div class="timestamp-group">
+                        <span class="meta-subtext" th:if="${payment.paymentDate != null}"><strong>Paid:</strong> <span th:text="${#temporals.format(payment.paymentDate, 'yyyy-MM-dd HH:mm')}"></span></span>
+                        <span class="meta-subtext" th:if="${payment.refundDate != null}"><strong>Refunded:</strong> <span th:text="${#temporals.format(payment.refundDate, 'yyyy-MM-dd HH:mm')}"></span></span>
+                    </div>
+                </td>
+
+                <!-- Refund Management Operational Actions Control -->
+                <td>
+                    <div class="btn-control-group">
+                        <!-- Show input form block only if item is not already refunded -->
+                        <form th:if="${payment.status.toString() != 'REFUNDED'}"
+                              th:action="@{/api/superagent/payments/refund/{id}(id=${payment.paymentId})}" method="POST" class="refund-panel-box">
+                            <input type="text" name="refundReason" class="refund-field-input" placeholder="Provide refund reason..." required />
+                            <button type="submit" class="btn btn-refund">Issue Refund</button>
+                        </form>
+
+                        <!-- Disabled Fallback element lock statement indicator if record is completed -->
+                        <button th:if="${payment.status.toString() == 'REFUNDED'}" class="btn btn-disabled" disabled>Payment Refunded</button>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(payments)}">
+                <td colspan="7" class="empty-table-placeholder">No billing transactions or records populated inside system directory parameters.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

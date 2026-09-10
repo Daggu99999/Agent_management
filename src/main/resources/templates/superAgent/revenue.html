@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Revenue Reports</title>
+    <style>
+        .dashboard-container { display: flex; gap: 20px; font-family: Arial, sans-serif; margin: 20px; flex-wrap: wrap; }
+        .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 200px; text-align: center; box-shadow: 2px 2px 5px #eee; }
+        .day { border-left: 5px solid #17a2b8; }
+        .week { border-left: 5px solid #6f42c1; }
+        .month { border-left: 5px solid #fd7e14; }
+        .year { border-left: 5px solid #28a745; }
+        h3 { margin: 0 0 10px 0; color: #555; font-size: 16px; text-transform: uppercase; }
+        .amount { font-size: 24px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+<h2>Super Agent - Successful Revenue Reports</h2>
+
+<div class="dashboard-container">
+    <!-- Daily Revenue Card -->
+    <div class="card day">
+        <h3>Revenue (Today)</h3>
+        <div class="amount" th:text="'$' + ${#numbers.formatDecimal(dailyRevenue, 1, 2)}">$0.00</div>
+    </div>
+
+    <!-- Weekly Revenue Card -->
+    <div class="card week">
+        <h3>Revenue (This Week)</h3>
+        <div class="amount" th:text="'$' + ${#numbers.formatDecimal(weeklyRevenue, 1, 2)}">$0.00</div>
+    </div>
+
+    <!-- Monthly Revenue Card -->
+    <div class="card month">
+        <h3>Revenue (This Month)</h3>
+        <div class="amount" th:text="'$' + ${#numbers.formatDecimal(monthlyRevenue, 1, 2)}">$0.00</div>
+    </div>
+
+    <!-- Yearly Revenue Card -->
+    <div class="card year">
+        <h3>Revenue (This Year)</h3>
+        <div class="amount" th:text="'$' + ${#numbers.formatDecimal(yearlyRevenue, 1, 2)}">$0.00</div>
+    </div>
+</div>
+
+<br>
+<a th:href="@{/api/superagent/dashboard}">Back to Dashboard</a>
+
+</body>
+</html>

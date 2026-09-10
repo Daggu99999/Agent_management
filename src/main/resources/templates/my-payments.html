@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>My Payments</title>
+    <link rel="stylesheet" th:href="@{/my-payments.css}">
+</head>
+<body>
+
+<h1>My Payments</h1>
+
+<!-- Wrapped items in a structural container class -->
+<div class="payments-container">
+
+    <!-- Changed container loop to act as a polished row card -->
+    <div class="payment-card" th:each="payment : ${payments}">
+
+        <h3>
+            Payment ID:
+            <span th:text="${payment.paymentId}"></span>
+        </h3>
+
+        <!-- Grouped values into a detail grid block -->
+        <div class="payment-details">
+            <p>
+                <strong>Amount:</strong>
+                ₹ <span class="payment-amount" th:text="${payment.amount}"></span>
+            </p>
+
+            <p>
+                <strong>Transaction ID:</strong>
+                <span th:text="${payment.transactionId}"></span>
+            </p>
+
+            <p>
+                <strong>Payment Type:</strong>
+                <span th:text="${payment.paymentType}"></span>
+            </p>
+
+            <span
+                    th:classappend="${payment.status.name() == 'SUCCESS'} ? 'status-success' :
+                 (${payment.status.name() == 'FAILED'} ? 'status-failed' : 'status-pending')"
+                    th:text="${payment.status}">
+</span>
+
+            <p>
+                <strong>Payment Date:</strong>
+                <span th:text="${payment.paymentDate}"></span>
+            </p>
+
+            <p>
+                <strong>Policy ID:</strong>
+                <span th:text="${payment.policy?.policyId}"></span>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

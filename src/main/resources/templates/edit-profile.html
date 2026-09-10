@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <!-- Fixed broken stylesheet link syntax -->
+    <link rel="stylesheet" th:href="@{/edit-profile.css}">
+</head>
+<body>
+
+<div class="edit-container">
+
+    <h1>Edit Profile</h1>
+
+    <!-- Fixed broken th:action binding to match your controller mapping -->
+    <form th:action="@{/customer/update-profile}" method="post">
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text"
+                   id="firstName"
+                   name="firstName"
+                   th:value="${user.firstName}"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text"
+                   id="lastName"
+                   name="lastName"
+                   th:value="${user.lastName}"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="text"
+                   id="mobileNumber"
+                   name="mobileNumber"
+                   th:value="${user.mobileNumber}"
+                   required>
+        </div>
+
+        <!-- Read-only fields are visually greyed out but safely viewable -->
+        <div class="form-group disabled-group">
+            <label>Email (Read-Only)</label>
+            <input type="email"
+                   th:value="${user.email}"
+                   readonly>
+        </div>
+
+        <div class="form-group disabled-group">
+            <label>Role</label>
+            <input type="text"
+                   th:value="${user.role}"
+                   readonly>
+        </div>
+
+        <div class="form-group disabled-group">
+            <label>Status</label>
+            <input type="text"
+                   th:value="${user.status}"
+                   readonly>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">
+                Update Profile
+            </button>
+            <a th:href="@{/customer/profile}" class="btn-cancel">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

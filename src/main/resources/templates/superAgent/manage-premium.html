@@ -1,0 +1,32 @@
+<div class="manage-premium-container">
+    <h1>Manage Premium</h1>
+    <link rel="stylesheet" th:href="@{/manage-premium.css}">
+
+    <!-- Displaying current product context -->
+    <div class="product-info-card">
+        <h2 th:text="${product.productName}">Product Name</h2>
+        <p class="current-premium">
+            Current Premium:
+            <span>₹ <span th:text="${product.basePremium}">0.00</span></span>
+        </p>
+    </div>
+
+    <!-- Corrected form tag with explicit action, method, and identifier -->
+    <form th:action="@{/api/superagent/products/premium/update/{id}(id=${product.productId})}" method="post" class="premium-form">
+
+        <div class="form-group">
+            <label for="basePremium">Enter New Premium Amount (₹)</label>
+            <input type="number"
+                   id="basePremium"
+                   name="basePremium"
+                   placeholder="e.g., 5500"
+                   min="0"
+                   step="0.01"
+                   required>
+        </div>
+
+        <button type="submit" class="btn-update">
+            Update Premium
+        </button>
+    </form>
+</div>

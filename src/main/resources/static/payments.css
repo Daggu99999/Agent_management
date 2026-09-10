@@ -1,0 +1,120 @@
+/* Modern Blue & White Palette */
+:root {
+    --primary-blue: #1e40af;       /* Deep corporate blue */
+    --hover-blue: #1d4ed8;         /* Vibrant accent blue */
+    --bg-light: #f8fafc;           /* Soft off-white background */
+    --card-white: #ffffff;         /* Pure white for the card */
+    --text-dark: #1e293b;          /* Dark slate for readable text */
+    --text-muted: #64748b;         /* Cool gray for secondary labels */
+    --border-color: #cbd5e1;       /* Light border */
+}
+
+/* General Layout Setup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Centralized Payment Card Container */
+.payment-card {
+    background-color: var(--card-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+
+/* Typography Details */
+.payment-card h2 {
+    color: var(--primary-blue);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    border-bottom: 2px solid #eff6ff;
+    padding-bottom: 0.75rem;
+}
+
+.payment-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0.75rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bold values aligned nicely on the right side */
+.payment-card p span {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* Form Layout Configurations */
+form {
+    margin-top: 1.75rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+/* Elegant Select Field Dropdown */
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-white);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none; /* Removes standard default OS arrows */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%231e40af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+}
+
+/* Primary Form Submission Button */
+button[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: var(--card-white);
+    border: none;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--hover-blue);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98);
+}

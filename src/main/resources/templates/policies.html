@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Policies</title>
+    <!-- Fixed missing quote and closing tag -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>My Policies</h1>
+    <!-- Fixed broken link tag -->
+    <a th:href="@{/customer/dashboard}">
+        &larr; Dashboard
+    </a>
+
+    <link rel="stylesheet" th:href="@{/policies.css}">
+</header>
+
+<div class="container">
+    <div class="policy-card" th:each="policy : ${policies}">
+
+        <h2 th:text="${policy.policyType}">Policy Type</h2>
+
+        <div class="policy-details">
+            <p>
+                <strong>Policy Number:</strong>
+                <span th:text="${policy.policyId}"></span>
+            </p>
+
+            <p>
+                <strong>Premium Amount:</strong>
+                ₹ <span th:text="${policy.premiumAmount}"></span>
+            </p>
+
+            <p>
+                <strong>Coverage Amount:</strong>
+                ₹ <span th:text="${policy.coverageAmount}"></span>
+            </p>
+
+            <p>
+                <strong>Created Date:</strong>
+                <span th:text="${policy.createdDate}"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${policy.status}"></span>
+            </p>
+
+            <p>
+                <!-- Added a safe navigation operator (?) to avoid NullPointerExceptions if an agent is missing -->
+                <strong>Agent:</strong>
+                <span th:text="${policy.agent?.firstName}"></span>
+            </p>
+        </div>
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

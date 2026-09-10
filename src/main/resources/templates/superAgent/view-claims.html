@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Claims Management</title>
+    <!-- Links to separate external CSS file -->
+    <link rel="stylesheet" th:href="@{/superagent-claims.css}">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="header-section">
+        <h1>System Claims Dashboard</h1>
+    </div>
+
+    <!-- Alert Notifications Feedback Banners -->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="table-responsive-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th class="col-id">ID</th>
+                <th>Customer Identity</th>
+                <th>Claim Request Details</th>
+                <th>Assigned Agent Handler</th>
+                <th>Current Status</th>
+                <th>System Timestamps</th>
+                <th class="col-actions">Operational Controls</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="claim : ${claims}">
+                <!-- ID Parameter -->
+                <td class="meta-title" th:text="${claim.claimId}"></td>
+
+                <!-- Customer Details -->
+                <td>
+                    <span class="meta-title" th:text="${claim.customer.firstName + ' ' + claim.customer.lastName}"></span>
+                    <span class="meta-subtext" th:text="${claim.customer.email}"></span>
+                </td>
+
+                <!-- Claim Value and Reasons -->
+                <td>
+                    <div class="data-row">
+                        <span class="meta-label">Amount: </span>
+                        <span class="amount-highlight" th:text="${'I₹ ' + claim.claimAmount}"></span>
+                    </div>
+                    <div class="data-row">
+                        <span class="meta-label">Reason: </span>
+                        <span class="meta-title text-sm" th:text="${claim.claimReason}"></span>
+                    </div>
+
+                    <!-- Supplemental Context Data Callouts -->
+                    <div th:if="${claim.rejectionReason != null}" class="callout callout-danger">
+                        <span class="meta-label text-danger">Rejection Info: </span>
+                        <span class="meta-subtext text-danger-dark" th:text="${claim.rejectionReason}"></span>
+                    </div>
+                    <div th:if="${claim.settlementAmount != null}" class="callout callout-info">
+                        <span class="meta-label text-info">Settled Payout: </span>
+                        <span th:text="${'I₹ ' + claim.settlementAmount}" class="amount-highlight text-info"></span>
+                    </div>
+                </td>
+
+                <!-- Assigned Representative -->
+                <td>
+                    <span th:if="${claim.agent != null}" class="meta-title" th:text="${claim.agent.firstName + ' ' + claim.agent.lastName}"></span>
+                    <span th:if="${claim.agent == null}" class="unassigned-flag">Unassigned</span>
+                </td>
+
+                <!-- Execution Status Enum Pill -->
+                <td>
+                    <span th:text="${claim.status}" th:class="'status-badge status-' + ${claim.status}"></span>
+                </td>
+
+                <!-- Tracking Timestamps -->
+                <td>
+                    <div class="timestamp-group">
+                        <span class="meta-subtext" th:if="${claim.claimDate != null}"><strong>Filed:</strong> <span th:text="${#temporals.format(claim.claimDate, 'yyyy-MM-dd HH:mm')}"></span></span>
+                        <span class="meta-subtext" th:if="${claim.approvalDate != null}"><strong>Approved:</strong> <span th:text="${#temporals.format(claim.approvalDate, 'yyyy-MM-dd HH:mm')}"></span></span>
+                        <span class="meta-subtext" th:if="${claim.settlementDate != null}"><strong>Settled:</strong> <span th:text="${#temporals.format(claim.settlementDate, 'yyyy-MM-dd HH:mm')}"></span></span>
+                    </div>
+                </td>
+
+                <!-- Functional Call Actions Panel -->
+                <td>
+                    <div class="btn-control-group">
+                        <!-- FIXED: Assign Agent option now displays on ANY active state if the agent is missing -->
+                        <a th:if="${claim.status.toString() != 'REJECTED' and claim.status.toString() != 'SETTLED' and claim.agent == null}"
+                           th:href="@{/api/superagent/claims/assign/{id}(id=${claim.claimId})}" class="btn btn-assign">Assign Agent</a>
+
+                        <!-- Action 2: Approve Status Change Routing -->
+                        <a th:if="${claim.status.toString() == 'SUBMITTED' or claim.status.toString() == 'PENDING' or claim.status.toString() == 'ASSIGNED' or claim.status.toString() == 'UNDER_REVIEW'}"
+                           th:href="@{/api/superagent/claims/approve/{id}(id=${claim.claimId})}" class="btn btn-approve">Approve Claim</a>
+
+                        <!-- Action 3: Reject Core Panel (Includes text payload context param) -->
+                        <form th:if="${claim.status.toString() == 'SUBMITTED' or claim.status.toString() == 'PENDING' or claim.status.toString() == 'ASSIGNED' or claim.status.toString() == 'UNDER_REVIEW'}"
+                              th:action="@{/api/superagent/claims/reject/{id}(id=${claim.claimId})}" method="POST" class="reject-panel-box">
+                            <input type="text" name="rejectionReason" class="reject-field-input" placeholder="Provide reason..." required />
+                            <button type="submit" class="btn btn-reject">Reject Claim</button>
+                        </form>
+
+                        <!-- Action 4: Financial Settlement Processing Link (Requires APPROVED and an Agent) -->
+                        <a th:if="${claim.status.toString() == 'APPROVED' and claim.agent != null}"
+                           th:href="@{/api/superagent/claims/settle/{id}(id=${claim.claimId})}" class="btn btn-settle">Settle Claim</a>
+
+                        <!-- UI Helper: Clear indicator showing why you can't settle yet -->
+                        <!-- Displays the button on any active claim row if it doesn't have an agent assigned yet -->
+
+
+
+                        <!-- Action 5: Static Informative Fallbacks -->
+                        <button th:if="${claim.status.toString() == 'REJECTED'}" class="btn btn-disabled" disabled>Claim Rejected</button>
+                        <span th:if="${claim.status.toString() == 'SETTLED'}" class="no-actions-flag">Completed & Closed</span>
+                    </div>
+                </td>
+
+            </tr>
+            <!-- Fallback empty view template array index block -->
+            <tr th:if="${#lists.isEmpty(claims)}">
+                <td colspan="7" class="empty-table-placeholder">No active customer claims registered inside system tracking parameters.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

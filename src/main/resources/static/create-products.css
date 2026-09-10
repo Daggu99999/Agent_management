@@ -1,0 +1,90 @@
+/* Container for the form */
+.form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #ffffff; /* Clean White */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.1); /* Subtle Blue/Dark Shadow */
+    border: 1px solid #e1e8ed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form Heading */
+.form-container h2 {
+    color: #003366; /* Deep Navy Blue */
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 8px;
+}
+
+/* Individual form field wrapping */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form Labels */
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+/* Inputs, Select dropdown, and Textarea styling */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333333;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Focus state for form controls */
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #0056b3; /* Bright Blue */
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+/* Prevent horizontal resizing of description box */
+.form-container textarea {
+    resize: vertical;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    width: 100%;
+    background-color: #0056b3; /* Primary Accent Blue */
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.15);
+}
+
+/* Submit Button Hover and Active states */
+.btn-submit:hover {
+    background-color: #004085; /* Darker Blue */
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}

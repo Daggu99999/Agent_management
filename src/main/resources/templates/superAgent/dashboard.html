@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Agent Dashboard</title>
+    <!-- Fixed broken stylesheet link syntax -->
+    <link rel="stylesheet" th:href="@{/super-agent-dashboard.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="main-header">
+        <h1>Super Agent Dashboard</h1>
+        <div class="user-profile-badge">
+            <span>Welcome, Super Agent</span>
+        </div>
+    </header>
+
+    <!-- Key Statistics Row Dashboard Grid -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Total Customers</h3>
+            <p class="stat-number">250</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Agents</h3>
+            <p class="stat-number">15</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Active Policies</h3>
+            <p class="stat-number">120</p>
+        </div>
+
+        <div class="stat-card text-alert">
+            <h3>Pending Claims</h3>
+            <p class="stat-number badge-alert">18</p>
+        </div>
+
+    </div>
+
+    <!-- Management Operational Content Modules -->
+    <div class="management-grid">
+
+        <div class="management-section">
+            <h2>User Management</h2>
+            <div class="action-links">
+                <a th:href="@{/api/superagent/agents}">View Agents</a>
+                <a th:href="@{/api/superagent/customers}">View Customers</a>
+            </div>
+        </div>
+
+        <div class="management-section">
+            <h2>Insurance Management</h2>
+            <div class="action-links">
+                <a th:href="@{/api/superagent/products}">Insurance Products</a>
+                <a th:href="@{/api/superagent/policies}">View Policies</a>
+
+            </div>
+        </div>
+
+        <div class="management-section">
+            <h2>Claim Management</h2>
+            <div class="action-links">
+                <a th:href="@{/api/superagent/claims}">View  Claims</a>
+
+            </div>
+        </div>
+
+        <div class="management-section">
+            <h2>Payment Management</h2>
+            <div class="action-links">
+                <a th:href="@{/api/superagent/payments}">View System Payments</a>
+
+
+            </div>
+        </div>
+
+        <div class="management-section full-width-section">
+            <h2>System Analytics & Business Intelligence</h2>
+            <div class="action-links analytics-links">
+                <a th:href="@{/api/superagent/revenue}">Revenue Reports</a>
+
+                <a th:href="@{/api/superagent/performance}">custommer Dashboard</a>
+
+                <a th:href="@{/api/superagent/statistic}">Policy Dashboard</a>
+                <a th:href="@{/api/superagent/claimsDashboard}">claims Dashboard</a>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

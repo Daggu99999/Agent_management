@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+    <!-- Corrected CSS Link Syntax -->
+    <link rel="stylesheet" th:href="@{/view-customers.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Customer Management</h1>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterates through customer list -->
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.firstName + ' ' + customer.lastName}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.mobileNumber}"></td>
+                <td th:text="${customer.role}"></td>
+                <td>
+                    <!-- Status Badges -->
+                    <span th:if="${customer.status.name() == 'ACTIVE'}" class="status-badge active-status">
+                            ACTIVE
+                        </span>
+                    <span th:if="${customer.status.name() == 'INACTIVE'}" class="status-badge inactive-status">
+                            INACTIVE
+                        </span>
+                </td>
+                <td class="action-buttons">
+                    <!-- Activate Action -->
+                    <a th:href="@{/api/superagent/customers/activate/{id}(id=${customer.id})}">
+                        <button type="button" class="btn btn-activate">Activate</button>
+                    </a>
+
+                    <!-- Deactivate Action -->
+                    <a th:href="@{/api/superagent/customers/deactivate/{id}(id=${customer.id})}">
+                        <button type="button" class="btn btn-deactivate">Deactivate</button>
+                    </a>
+
+                    <!-- Change Role Action -->
+                    <a th:href="@{/api/superagent/customers/change-role/{id}(id=${customer.id})}">
+                        <button type="button" class="btn btn-role">Change Role</button>
+                    </a>
+                </td>
+            </tr>
+
+            <!-- Empty State Row -->
+            <tr th:if="${#lists.isEmpty(customers)}">
+                <td colspan="7" class="empty-state">
+                    No Customers Found
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

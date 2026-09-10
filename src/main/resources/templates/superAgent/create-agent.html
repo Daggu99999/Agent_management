@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Agent</title>
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .form-container h2 {
+            color: #0056b3;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .input-group { margin-bottom: 20px; }
+        .form-container input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        .form-container input:focus {
+            border-color: #0056b3;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover { background-color: #004085; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    </style>
+</head>
+<body style="background-color: #f4f7fc;">
+
+<!--@thymesVar id="agent" type="AgentManagement.Entity.Agent"-->
+<!-- th:action targets the POST save handler mapping inside your controller -->
+<form th:action="@{/api/superagent/agents/create}" th:object="${agent}" method="POST" class="form-container">
+
+    <h2>Create New Agent</h2>
+
+    <div class="input-group">
+        <label th:for="firstName" class="sr-only">First Name</label>
+        <input type="text" th:field="*{firstName}" placeholder="First Name" required>
+    </div>
+
+    <div class="input-group">
+        <label th:for="lastName" class="sr-only">Last Name</label>
+        <input type="text" th:field="*{lastName}" placeholder="Last Name" required>
+    </div>
+
+    <div class="input-group">
+        <label th:for="email" class="sr-only">Email</label>
+        <input type="email" th:field="*{email}" placeholder="Email" required>
+    </div>
+
+    <div class="input-group">
+        <label th:for="mobileNumber" class="sr-only">Mobile Number</label>
+        <input type="text" th:field="*{mobileNumber}" placeholder="Mobile Number" required>
+    </div>
+
+    <div class="input-group">
+        <label th:for="password" class="sr-only">Password</label>
+        <input type="password" th:field="*{password}" placeholder="Password" required>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Create Agent
+    </button>
+
+</form>
+</body>
+</html>

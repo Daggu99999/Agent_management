@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Policy Management</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7fc; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #0056b3; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background-color: #0056b3; color: white; }
+        .badge { padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .status-APPROVED { background-color: #d1fae5; color: #065f46; }
+        .status-REJECTED { background-color: #fee2e2; color: #991b1b; }
+        .status-PENDING { background-color: #fef3c7; color: #92400e; }
+        .btn { padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; color: white; display: inline-block; margin-right: 5px; }
+        .btn-edit { background-color: #0056b3; }
+        .btn-approve { background-color: #10b981; }
+        .btn-reject { background-color: #ef4444; }
+        .date-text { font-size: 12px; color: #64748b; display: block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Policy Management System</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Premium Amount</th>
+            <th>Coverage Amount</th>
+            <th>Lifecycle Status</th>
+            <th>Decision Dates</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="policy : ${policies}">
+            <td th:text="${policy.policyId}"></td>
+            <td th:text="${policy.policyType}"></td>
+            <td th:text="${'₹' + policy.premiumAmount}"></td>
+            <td th:text="${'₹' + policy.coverageAmount}"></td>
+            <td>
+                <span th:text="${policy.status}" th:class="'badge status-' + ${policy.status}"></span>
+            </td>
+            <td>
+                <!-- Display timestamps conditionally based on what's populated -->
+                <span class="date-text" th:if="${policy.createdDate != null}">
+                        <strong>Created:</strong> <span th:text="${#temporals.format(policy.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </span>
+                <span class="date-text" th:if="${policy.approvedDate != null}">
+                        <strong>Approved:</strong> <span th:text="${#temporals.format(policy.approvedDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </span>
+                <span class="date-text" th:if="${policy.rejectedDate != null}">
+                        <strong>Rejected:</strong> <span th:text="${#temporals.format(policy.rejectedDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </span>
+            </td>
+            <td>
+                <a th:href="@{/api/superagent/policies/edit/{id}(id=${policy.policyId})}" class="btn btn-edit">Edit</a>
+
+                <!-- Only show status modification buttons if policy is not already handled -->
+                <a th:if="${policy.status != null and policy.status.toString() != 'APPROVED'}"
+                   th:href="@{/api/superagent/policies/approve/{id}(id=${policy.policyId})}" class="btn btn-approve">Approve</a>
+
+                <a th:if="${policy.status != null and policy.status.toString() != 'REJECTED'}"
+                   th:href="@{/api/superagent/policies/reject/{id}(id=${policy.policyId})}" class="btn btn-reject">Reject</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(policies)}">
+            <td colspan="7" style="text-align: center; color: #64748b; padding: 20px;">No policies found.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

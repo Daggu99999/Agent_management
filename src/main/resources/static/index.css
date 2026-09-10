@@ -1,0 +1,353 @@
+/* ==========================================================================
+   1. BASE STYLES & RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f4f7fa; /* Clean light gray-blue background */
+    color: #1e293b; /* Deep slate text */
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e3a8a; /* Deep Navy Blue */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+header nav ul li a:hover {
+    color: #2563eb; /* Vibrant Blue Accent */
+}
+
+/* Auth Buttons */
+header nav ul li a[href*="login"],
+header nav ul li a[href*="logout"] {
+    background-color: #2563eb; /* Royal Blue */
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+header nav ul li a[href*="login"]:hover,
+header nav ul li a[href*="logout"]:hover {
+    background-color: #1d4ed8; /* Deep Blue */
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+    color: #ffffff;
+    padding: 110px 8%;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto 35px auto;
+    color: #93c5fd; /* Soft Blue-Gray text */
+}
+
+.hero-content .cta-btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #2563eb; /* Blue Text on White Button */
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 35px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.hero-content .cta-btn:hover {
+    background-color: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   4. WHY CHOOSE US (FEATURES)
+   ========================================================================== */
+.features {
+    padding: 80px 8%;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.features h2, .plans-section h2, .contact h2 {
+    font-size: 32px;
+    color: #0f172a;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #f8fafc;
+    padding: 35px 20px;
+    border-radius: 10px;
+    border-top: 4px solid #2563eb; /* Blue highlights replace the green */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background-color: #f1f5f9;
+}
+
+.feature-card h3 {
+    color: #1e3a8a;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #4a5568;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   5. INSURANCE PLANS (THYMELEAF GRID)
+   ========================================================================== */
+.plans-section {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.plan-card {
+    background-color: #ffffff;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.08);
+    border-color: #3b82f6;
+}
+
+.plan-card h3 {
+    color: #1e3a8a;
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+.plan-card p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.plan-card p span {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Style for Premiums and Coverages */
+.plan-card p:nth-of-type(2) span {
+    color: #2563eb; /* Vibrant Blue for premiums */
+    font-size: 17px;
+}
+
+.plan-card p:nth-of-type(3) span {
+    color: #1e3a8a; /* Slate/Dark Blue for coverage amount */
+    font-size: 17px;
+}
+
+/* Description field styling */
+.plan-card p[th\:text] {
+    color: #64748b;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Action Button */
+.plan-card a {
+    display: block;
+    text-align: center;
+    background-color: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.plan-card a:hover {
+    background-color: #1d4ed8;
+}
+
+/* ==========================================================================
+   6. STATISTICS COUNTER BANNER
+   ========================================================================== */
+.stats {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    padding: 60px 8%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-box h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #93c5fd; /* Ice Blue highlight numbers */
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   7. CONTACT SECTION
+   ========================================================================== */
+.contact {
+    padding: 80px 8%;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.contact-details p {
+    background-color: #f8fafc;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #1e3a8a;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+footer {
+    background-color: #0f172a; /* Deep Corporate Navy-Black */
+    color: #94a3b8;
+    padding: 60px 8% 20px 8%;
+    border-top: 4px solid #2563eb; /* Top border accent */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+footer h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+footer p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+footer p:hover {
+    color: #3b82f6; /* Subtle blue interactive highlight */
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #1e293b;
+    font-size: 13px;
+    color: #475569;
+}

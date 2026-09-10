@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLife Insurance</title>
+    <link rel="stylesheet" th:href="@{/user-interface.css}">
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        🛡️ SecureLife
+    </div>
+
+    <nav>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#plans">Plans</a></li>
+           
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Protect What Matters Most
+        </h1>
+
+        <p>
+            Affordable health, life, travel and vehicle
+            insurance plans designed for you and your family.
+        </p>
+
+
+        </a>
+        <a href="#plans" class="cta-btn">Explore Plans</a>
+    </div>
+
+</section>
+
+<!-- WHY CHOOSE US -->
+
+<section class="features">
+
+    <h2>Why Choose SecureLife?</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h3>⚡ Fast Claims</h3>
+            <p>Quick and transparent claim processing.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🛡️ Complete Protection</h3>
+            <p>Coverage for life, health, travel and vehicles.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>💰 Affordable Premiums</h3>
+            <p>Flexible plans for all budgets.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📞 24/7 Support</h3>
+            <p>Dedicated customer support whenever needed.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INSURANCE PLANS -->
+
+<section id="plans" class="plans-section">
+
+    <h2>Insurance Plans</h2>
+
+    <div class="plans-grid">
+
+        <div class="plan-card"
+             th:each="product : ${products}">
+
+            <h3 th:text="${product.productName}">
+                Product Name
+            </h3>
+
+            <p>
+                Type:
+                <span th:text="${product.policyType}"></span>
+            </p>
+
+            <p>
+                Premium:
+                ₹<span th:text="${product.basePremium}"></span>
+            </p>
+
+            <p>
+                Coverage:
+                ₹<span th:text="${product.coverageAmount}"></span>
+            </p>
+
+            <p th:text="${product.description}"></p>
+
+            <a th:href="@{/customer/buy/{id}(id=${product.productId})}">
+                Policy
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+    <div class="stat-box">
+        <h2>5000+</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>12000+</h2>
+        <p>Policies Issued</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>98%</h2>
+        <p>Claim Settlement</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Customer Support</p>
+    </div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section id="contact" class="contact">
+
+    <h2>Contact Us</h2>
+
+    <div class="contact-details">
+
+        <p>📧 support@securelife.com</p>
+
+        <p>📞 +91 9876543210</p>
+
+        <p>📍 Hyderabad, Telangana, India</p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>SecureLife</h3>
+
+            <p>
+                Protecting families and businesses with
+                reliable insurance solutions.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <p>Home</p>
+            <p>Plans</p>
+            <p>Dashboard</p>
+
+        </div>
+
+        <div>
+
+            <h3>Support</h3>
+
+            <p>Claims</p>
+            <p>Payments</p>
+            <p>Policies</p>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 SecureLife Insurance. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>

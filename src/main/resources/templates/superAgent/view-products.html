@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Products</title>
+    <!-- Fixed broken stylesheet link syntax -->
+    <link rel="stylesheet" th:href="@{/view-products.css}">
+</head>
+
+<!-- Create Product Button -->
+<a th:href="@{/api/superagent/products/create}">
+    <button type="button" class="btn btn-create">+ Create Product</button>
+</a>
+
+<div th:each="product : ${products}" class="product-card">
+
+    <h2 th:text="${product.productName}"></h2>
+
+    <p>
+        Policy Type :
+        <span th:text="${product.policyType}"></span>
+    </p>
+
+    <p>
+        Premium :
+        ₹ <span th:text="${product.basePremium}"></span>
+    </p>
+
+    <p>
+        Coverage :
+        ₹ <span th:text="${product.coverageAmount}"></span>
+    </p>
+
+    <p th:text="${product.description}"></p>
+
+    <!-- Manage Premium Button -->
+    <a th:href="@{/api/superagent/products/premium/{id}(id=${product.productId})}">
+        <button type="button" class="btn btn-manage">Manage Premium</button>
+    </a>
+
+</div>

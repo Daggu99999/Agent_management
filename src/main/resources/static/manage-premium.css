@@ -1,0 +1,104 @@
+/* Container wrapper */
+.manage-premium-container {
+    max-width: 500px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 15px;
+}
+
+/* Page Header */
+.manage-premium-container h1 {
+    color: #003366; /* Deep Navy Blue */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 8px;
+}
+
+/* Info block displaying current rates */
+.product-info-card {
+    background-color: #ffffff;
+    border-left: 4px solid #0056b3; /* Blue accent bar */
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-info-card h2 {
+    color: #333333;
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+}
+
+.current-premium {
+    margin: 0;
+    color: #666666;
+    font-size: 1rem;
+}
+
+.current-premium span {
+    font-weight: 700;
+    color: #0056b3; /* Highlights current price in bright blue */
+}
+
+/* Form block */
+.premium-form {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+/* Numeric Input layout styling */
+.premium-form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.premium-form input[type="number"]:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+/* Interactive Action Button styling */
+.btn-update {
+    width: 100%;
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-update:hover {
+    background-color: #004085; /* Darker tone on interaction hover */
+}
+
+.btn-update:active {
+    transform: scale(0.99);
+}

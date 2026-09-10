@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Policy Payment</title>
+    <!-- Fixed unclosed link tag -->
+    <link rel="stylesheet" th:href="@{/payments.css}">
+</head>
+<body>
+
+<div class="payment-card">
+
+    <h2>Policy Payment</h2>
+
+    <p>
+        Policy ID :
+        <span th:text="${policy.policyId}"></span>
+    </p>
+
+    <p>
+        Policy Type :
+        <span th:text="${policy.policyType}"></span>
+    </p>
+
+    <p>
+        Premium Amount :
+        ₹ <span th:text="${policy.premiumAmount}"></span>
+    </p>
+
+    <p>
+        Coverage Amount :
+        ₹ <span th:text="${policy.coverageAmount}"></span>
+    </p>
+
+    <!-- Fixed broken form action syntax -->
+    <!-- Fixed form declaration pointing to your @PostMapping handler -->
+    <form th:action="@{/customer/pay}" method="post">
+
+
+    <input type="hidden"
+               name="policyId"
+               th:value="${policy.policyId}">
+
+        <label for="paymentType">Select Payment Method</label>
+        <select id="paymentType" name="paymentType" required>
+            <option value="">Choose Payment Method</option>
+            <option value="UPI">UPI</option>
+            <option value="CREDIT_CARD">Credit Card</option>
+            <option value="DEBIT_CARD">Debit Card</option>
+            <option value="NET_BANKING">Net Banking</option>
+            <option value="WALLET">Wallet</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Pay Now
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agent Management</title>
+    <!-- Fixed missing link tag framework syntax -->
+    <link rel="stylesheet" th:href="@{/view-agents.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Agent Management</h1>
+        <!-- Fixed broken navigation link layout -->
+        <!-- This correctly triggers the GET controller action to deliver your blank form view -->
+        <a th:href="@{/api/superagent/agents/create}" class="btn-create">
+            + Create Agent
+        </a>
+
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Iterates and evaluates the role type condition smoothly -->
+            <tr th:each="agent : ${agents}" th:if="${agent.role != null and (agent.role == 'ROLE_AGENT' or agent.role.toString() == 'ROLE_AGENT')}">
+
+                <td class="id-column" th:text="${agent.id}"></td>
+
+                <td th:text="${agent.firstName + ' ' + agent.lastName}"></td>
+
+                <td th:text="${agent.email}"></td>
+
+                <td th:text="${agent.mobileNumber}"></td>
+
+                <td th:text="${agent.role}"></td>
+
+                <td>
+                    <!-- Modern pill badge styling with safety context fallback mapping classes -->
+                    <span th:text="${agent.status}"
+                          th:class="${agent.status != null and (agent.status == 'ACTIVE' or agent.status.toString() == 'ACTIVE') ? 'badge status-active' : 'badge status-inactive'}">
+                    </span>
+                </td>
+
+                <td class="action-buttons">
+                    <!-- Fixed broken raw anchor link expressions by wrapping them in valid th:href components -->
+                    <a th:href="@{/api/superagent/agents/edit/{id}(id=${agent.id})}" class="btn-action btn-edit">Edit</a>
+
+
+
+                    <a th:href="@{/api/superagent/agents/delete/{id}(id=${agent.id})}" class="btn-action btn-delete">Delete</a>
+
+                    <!-- Approve Action Button -->
+                    <a th:href="@{/api/superagent/agents/approve/{id}(id=${agent.id})}">
+                        <button type="button" class="btn btn-approve">Approve</button>
+                    </a>
+
+                    <!-- Reject Action Button -->
+                    <a th:href="@{/api/superagent/agents/reject/{id}(id=${agent.id})}">
+                        <button type="button" class="btn btn-reject">Reject</button>
+                    </a>
+
+
+
+
+                </td>
+
+            </tr>
+
+            <!-- Fallback design view row placeholder if no agent records match tracking list arrays -->
+            <tr th:if="${#lists.isEmpty(agents)}">
+                <td colspan="7" style="text-align: center; padding: 25px; color: #64748b;">
+                    No registered management agent profiles exist matching this view criteria.
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

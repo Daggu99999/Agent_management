@@ -1,0 +1,201 @@
+/* Core Global Layout variables setup parameters */
+:root {
+    --slate-heading: #0f172a;
+    --brand-blue: #2563eb;
+    --bg-layer: #f8fafc;
+    --card-surface: #ffffff;
+    --border-slate: #e2e8f0;
+    --dark-text: #1e293b;
+    --muted-subtext: #64748b;
+
+    /* Dynamic Payment Status Color Arrays mapping blocks */
+    --badge-success-bg: #d1fae5;  --badge-success-txt: #065f46;
+    --badge-pending-bg: #fef3c7;  --badge-pending-txt: #92400e;
+    --badge-refund-bg: #fee2e2;   --badge-refund-txt: #991b1b;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-layer);
+    color: var(--dark-text);
+    margin: 0;
+    padding: 30px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--card-surface);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    border: 1px solid var(--border-slate);
+}
+
+.header-section {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-slate);
+    padding-bottom: 16px;
+}
+
+.header-section h1 {
+    color: var(--slate-heading);
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Alert Notification Framework Banners styling */
+.alert {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.alert-success { background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.alert-danger { background-color: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* Structural Ledger Table Elements alignment metrics */
+.table-responsive-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    background-color: #f1f5f9;
+    color: var(--dark-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-slate);
+    text-align: left;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-slate);
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+tr:hover td {
+    background-color: #f8fafc4d;
+}
+
+/* Metadata Text classes configurations */
+.meta-title { font-weight: 600; color: var(--dark-text); }
+.meta-subtext { font-size: 13px; color: var(--muted-subtext); display: block; margin-top: 2px; }
+.meta-label { font-weight: 500; color: var(--muted-subtext); font-size: 13px; }
+.text-sm { font-size: 13px; }
+.data-row { margin-bottom: 4px; }
+.amount-highlight { font-weight: 700; color: var(--dark-text); }
+.select-text { user-select: all; font-family: monospace; font-size: 13px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+
+/* Dynamic Status Badge Array classes mappings */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+/* Adjust selector tokens matching your exact PaymentStatus Enum values */
+.status-SUCCESS, .status-PAID, .status-SUCCESSFUL, .status-COMPLETED { background-color: var(--badge-success-bg); color: var(--badge-success-txt); }
+.status-PENDING { background-color: var(--badge-pending-bg); color: var(--badge-pending-txt); }
+.status-REFUNDED { background-color: var(--badge-refund-bg); color: var(--badge-refund-txt); }
+
+.timestamp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Callout Info box parameter styles */
+.callout {
+    margin-top: 6px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.callout-refund { background: #fef2f2; border-left: 3px solid #ef4444; }
+.text-refund { color: #b91c1c; font-weight: 600; }
+.text-refund-dark { color: #7f1d1d; }
+
+/* Action Interface buttons structure styling layouts */
+.btn-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    min-width: 180px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.btn:active { transform: scale(0.98); }
+
+/* Context Inline Input layout boxes */
+.refund-panel-box {
+    border: 1px solid var(--border-slate);
+    border-radius: 6px;
+    padding: 8px;
+    background: #f8fafc;
+}
+.refund-field-input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    outline: none;
+}
+.refund-field-input:focus { border-color: #ef4444; }
+.btn-refund { background-color: #ef4444; color: #ffffff; }
+.btn-refund:hover { background-color: #dc2626; }
+
+.btn-disabled {
+    background-color: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Structural Width Sizing properties variables */
+.col-id { width: 50px; }
+.col-actions { width: 200px; }
+.empty-table-placeholder {
+    text-align: center;
+    color: var(--muted-subtext);
+    padding: 40px !important;
+    font-size: 15px;
+    font-weight: 500;
+}

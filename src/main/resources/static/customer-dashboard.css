@@ -1,0 +1,143 @@
+/* ==========================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: #f4f7fc; /* Soft gray/blue background for contrast */
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   2. HEADER STYLES
+   ========================================== */
+.header {
+    background: linear-gradient(135deg, #0d47a1, #1976d2); /* Professional deep corporate blue */
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 1.05rem;
+    color: #e3f2fd; /* Light tinted blue text */
+    font-weight: 400;
+}
+
+/* ==========================================
+   3. LAYOUT CONTAINER
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ==========================================
+   4. DASHBOARD GRID & CARDS
+   ========================================== */
+/* CSS Grid that automatically arranges columns based on screen width */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Clean, modern dashboard card design */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px 25px;
+    text-decoration: none; /* Removes standard anchor underline */
+    color: inherit; /* Inherits main text color */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+/* Interactive card hover elevation */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(13, 71, 161, 0.08);
+    border-color: #1976d2;
+}
+
+/* Component Icons */
+.card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    background-color: #f0f4f8;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Soft icon highlight on parent card hover */
+.card:hover .icon {
+    background-color: #e3f2fd;
+}
+
+/* Card Typography */
+.card h3 {
+    font-size: 1.25rem;
+    color: #0d47a1; /* Matching corporate blue headers */
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #627d98; /* Muted slate gray for secondary details */
+}
+
+/* Specific theme for Logout action */
+.card[href="/"]:hover {
+    border-color: #d32f2f; /* Red border transition for log out alert */
+}
+
+.card[href="/"]:hover h3 {
+    color: #d32f2f;
+}
+
+.card[href="/"]:hover .icon {
+    background-color: #ffebee;
+}
+
+/* ==========================================
+   5. RESPONSIVE DESIGN ADJUSTMENTS
+   ========================================== */
+@media (max-width: 600px) {
+    .header {
+        padding: 20px 15px;
+    }
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    .container {
+        margin: 20px auto;
+    }
+    .card {
+        padding: 20px;
+    }
+}

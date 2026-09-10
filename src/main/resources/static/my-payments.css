@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #f4f8ff;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #0d47a1;
+    margin-bottom: 35px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.payments-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.payment-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    border-left: 6px solid #1976d2;
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.04); /* Tinted subtle shadow */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(13, 71, 161, 0.12); /* Deeper interactive depth shadow */
+}
+
+.payment-card h3 {
+    color: #1565c0;
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px dashed #e3f2fd;
+    padding-bottom: 12px;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Key Real-World Fix: Flex row with space separation */
+.payment-details p {
+    font-size: 14px;
+    color: #455a64;
+    background: #f8fbff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between; /* Pushes labels left, variables right */
+    align-items: center;
+}
+
+.payment-details strong {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+/* Clearer dynamic value contrast styling */
+.payment-details span {
+    font-weight: 500;
+    color: #1c2d42;
+}
+
+.payment-amount {
+    color: #2e7d32 !important; /* Forces clean emerald currency styling */
+    font-weight: 700 !important;
+    font-size: 16px;
+}
+
+/* UI Improvement: Converted plain statuses into distinct modern chip badges */
+.status-success, .status-failed, .status-pending {
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-failed {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.status-pending {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+@media(max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .payment-card {
+        padding: 20px;
+    }
+}

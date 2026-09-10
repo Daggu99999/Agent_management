@@ -1,0 +1,184 @@
+/* Base Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #f4f8ff; /* Consistent framework background tint */
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #1e293b;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Page Control Header Row */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 20px;
+}
+
+.page-header h1 {
+    color: #0d47a1;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Top Call-To-Action Layout Button */
+.btn-create {
+    background-color: #1976d2;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+}
+
+.btn-create:hover {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+}
+
+/* Responsive Table Wrapper Frame */
+.table-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow-x: auto; /* Protects layout matrix if text values run long on phones */
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.04);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Table Header Styles */
+th {
+    background-color: #f8fbff;
+    color: #0d47a1;
+    font-weight: 600;
+    padding: 16px 20px;
+    border-bottom: 2px solid #e3f2fd;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Rows and Cells */
+td {
+    padding: 16px 20px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Alternating Background Interlacing */
+tbody tr:nth-child(even) {
+    background-color: #fafcfe;
+}
+
+tbody tr:hover {
+    background-color: #f0f6ff;
+    transition: background-color 0.15s ease;
+}
+
+.id-column {
+    font-weight: 700;
+    color: #1976d2;
+}
+
+/* Modern Status Badge Pillow Tags */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-inactive {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+/* Action Operations Hyperlink Matrix Controls */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap; /* Allows safe item packing on narrow monitors */
+}
+
+.btn-action {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.btn-edit {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+.btn-edit:hover { background-color: #1976d2; color: #ffffff; }
+
+.btn-delete {
+    background-color: #ffebee;
+    color: #c62828;
+}
+.btn-delete:hover { background-color: #c62828; color: #ffffff; }
+
+.btn-deactivate {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+.btn-deactivate:hover { background-color: #ef6c00; color: #ffffff; }
+
+.btn-activate {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+.btn-activate:hover { background-color: #2e7d32; color: #ffffff; }
+
+/* Responsive Layout Matrix Overrides */
+@media(max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .btn-create {
+        width: 100%;
+        text-align: center;
+    }
+}

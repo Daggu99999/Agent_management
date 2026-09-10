@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <!-- Fixed stylesheet link placement -->
+  <link rel="stylesheet" th:href="@{/profile.css}">
+</head>
+<body>
+
+<!-- Fixed unclosed wrapper structure -->
+<div class="profile-container">
+
+  <h1>My Profile</h1>
+
+  <div class="profile-card">
+
+    <div class="profile-details">
+      <p>
+        <strong>First Name:</strong>
+        <span th:text="${user.firstName}">John</span>
+      </p>
+
+      <p>
+        <strong>Last Name:</strong>
+        <span th:text="${user.lastName}">Doe</span>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <span th:text="${user.email}">john.doe@example.com</span>
+      </p>
+
+      <p>
+        <strong>Mobile Number:</strong>
+        <span th:text="${user.mobileNumber}">+91 9876543210</span>
+      </p>
+
+      <p>
+        <strong>Role:</strong>
+        <span th:text="${user.role}">CUSTOMER</span>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <!-- Hooked up dynamic status styling using your framework colors -->
+        <span th:text="${user.status}"
+              th:class="${user.status == 'ACTIVE' ? 'status-active' : 'status-inactive'}">
+                    ACTIVE
+                </span>
+      </p>
+    </div>
+
+    <div class="actions">
+      <!-- Fixed broken anchor tags -->
+      <a th:href="@{/customer/edit-profile}" class="btn btn-primary">
+        Edit Profile
+      </a>
+
+      <a th:href="@{/customer/change-password}" class="btn btn-secondary">
+        Change Password
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

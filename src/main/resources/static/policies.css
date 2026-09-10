@@ -1,0 +1,107 @@
+/* Base Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7fc; /* Soft, off-white/light blue background */
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    background-color: #0056b3; /* Deep royal blue */
+    color: #ffffff;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.header a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Layout Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    /* Responsive grid layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Policy Card Styles */
+.policy-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border-top: 5px solid #0056b3; /* Blue accent bar on top */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.policy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 56, 179, 0.12); /* Subtle blue tinted shadow */
+}
+
+/* Policy Type Header */
+.policy-card h2 {
+    color: #003366; /* Dark navy blue text */
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e1e8ed;
+    padding-bottom: 0.5rem;
+}
+
+/* Details Section */
+.policy-details p {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between; /* Pushes labels to the left and data to the right */
+    color: #555555;
+}
+
+.policy-details p strong {
+    color: #004085; /* Medium corporate blue */
+    font-weight: 600;
+}
+
+.policy-details span {
+    font-weight: 500;
+    color: #212529;
+}
+
+/* Highlighted amounts */
+.policy-details p:nth-child(2) span,
+.policy-details p:nth-child(3) span {
+    color: #0056b3;
+    font-weight: 700;
+}

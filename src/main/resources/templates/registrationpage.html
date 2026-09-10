@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="./registration.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="register-card">
+
+        <h2>Create Account</h2>
+        <form action="/register/1" method="POST">
+
+
+        <input type="text"
+               name="firstName"
+               placeholder="First Name"
+               required>
+
+        <input type="text"
+               name="lastName"
+               placeholder="Last Name"
+               required>
+
+        <input type="email"
+               name="email"
+               placeholder="Email"
+               required>
+
+        <input type="text"
+               name="mobileNumber"
+               placeholder="Mobile Number"
+               required>
+
+        <input type="password"
+               name="password"
+               placeholder="Password"
+               required>
+
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="ROLE_CUSTOMER">Customer</option>
+            <option value="ROLE_AGENT">Agent</option>
+        </select>
+
+        <button type="submit">
+            Register
+        </button>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

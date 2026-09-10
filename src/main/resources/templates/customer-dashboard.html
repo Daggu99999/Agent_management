@@ -1,0 +1,68 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+
+    <!-- FIX: Added Thymeleaf context syntax to link to the root static directory -->
+    <link rel="stylesheet" th:href="@{/customer-dashboard.css}">
+</head> <!-- FIX: Changed <head> to </head> -->
+
+<body>
+
+<header class="header">
+    <h1>Insurance Management System</h1>
+    <p>Customer Dashboard</p>
+</header>
+
+<div class="container">
+    <div class="dashboard-grid">
+
+        <!-- My Policies -->
+        <a href="/customer/policies" class="card">
+            <div class="icon">📄</div>
+            <h3>My Policies</h3>
+            <p>View all active insurance policies.</p>
+        </a>
+
+        <!-- Policy Benefits -->
+        <a href="/customer/policy-benefits" class="card">
+            <div class="icon">🎯</div>
+            <h3>Policy Benefits</h3>
+            <p>Check benefits and coverage details.</p>
+        </a>
+
+        <!-- Claims -->
+        <a href="/customer/claims" class="card">
+            <div class="icon">📝</div>
+            <h3>Claims</h3>
+            <p>Track and raise insurance claims.</p>
+        </a>
+
+        <!-- Payments -->
+        <a href="/customer/payments" class="card">
+            <div class="icon">💳</div>
+            <h3>Payments</h3>
+            <p>View premium payment history.</p>
+        </a>
+
+        <!-- My Profile -->
+        <a href="/customer/profile" class="card">
+            <div class="icon">👤</div>
+            <h3>My Profile</h3>
+            <p>View and manage profile information.</p>
+        </a>
+
+        <!-- Logout -->
+        <a  class="card">
+            <div class="icon">🚪</div>
+            <h3>Logout</h3>
+            <p>Sign out from your account.</p>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claims</title>
+    <link rel="stylesheet" href="claims.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>My Claims</h1>
+
+    <!-- Corrected href attribute and added a clear action label -->
+    <a href="/customer/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+</header>
+
+</body>
+</html>
+
+
+<div class="container">
+
+    <table>
+        <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Policy</th>
+            <th>Amount</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Claim Date</th>
+            <th>Settlement Amount</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="claim : ${claims}">
+
+            <td th:text="${claim.claimId}"></td>
+
+            <td th:text="${claim.policy.policyName}"></td>
+
+            <td th:text="${claim.claimAmount}"></td>
+
+            <td th:text="${claim.claimReason}"></td>
+
+            <td th:text="${claim.status}"></td>
+
+            <td th:text="${claim.claimDate}"></td>
+
+            <td th:text="${claim.settlementAmount}"></td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
